@@ -36,7 +36,7 @@ The registry takes an options hash:
 |--------|---------|-------------|
 | volume_type | 'gp2' | 'gp2', 'io1', 'st1', 'sc1', or 'standard' |
 | volume_count | 0 | Number of identical EBS volumes to create, for RAID |
-| volume_size | none | Size of each volume created |
+| volume_size | 0 | Size of each volume created |
 | iops | 3 * volume_size | Number of provisioned IOPS to request, per volume |
 | root_vol_size | 12 | Size of the root EBS volume (/dev/sda1) to attach to an instance |
 | delete_on_termination | 'true' | Delete EBS volumes when the attached instance is terminated | 
