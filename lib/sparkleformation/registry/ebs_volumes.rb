@@ -16,17 +16,19 @@ SfnRegistry.register(:ebs_volumes) do |options = {}|
         volume_size root_vol_size.to_s
       end
     },
-    (0...volume_count).map { |c| -> {
-      device_name "/dev/sd#{(102 + c).chr}" # f, g, h, i...
-      ebs do
-        if volume_type == 'io1'
-          iops (iops == 0 ? 3 * volume_size : iops).to_s
+    if volume_count > 0
+      (0...volume_count).map { |c| -> {
+        device_name "/dev/sd#{(102 + c).chr}" # f, g, h, i...
+        ebs do
+          if volume_type == 'io1'
+            iops (iops == 0 ? 3 * volume_size : iops).to_s
+          end
+          delete_on_termination delete_on_termination
+          volume_type volume_type
+          volume_size volume_size.to_s
         end
-        delete_on_termination delete_on_termination
-        volume_type volume_type
-        volume_size volume_size.to_s
-      end
+        }
       }
-    }
+    end
   )
 end
