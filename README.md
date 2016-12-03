@@ -2,6 +2,10 @@
 Provides a registry that creates EBS volume attachments for
 an EC2 instance or launch configuration.
 
+This sparkle pack is intended for a very simple use case.  See
+https://github.com/gswallow/sparkle-pack-aws-my-snapshots, which
+allows you to restore EBS volumes from snapshot.
+
 ## Usage
 
 Add the pack to your Gemfile and .sfn:
